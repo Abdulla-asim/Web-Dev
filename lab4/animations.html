@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations - Pac Man</title>
+
+    <style>
+        * {
+            padding: 1rem;
+        }
+
+        .container {
+            display: flex;
+            border: 5px solid black;
+            padding: 15rem 1rem;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #frame {
+            /* border: 5px solid rgb(181, 150, 219); */
+            width: 15rem;
+            height: 15rem;
+            padding: 0;
+            background-color: #0a1c2f;
+        }
+
+        .pacman-top {
+            background-color: #329db0;
+            border-radius: 100px 100px 0 0;
+            height: 25px;
+            width: 80px;
+            animation: rotate1 0.99s infinite linear;
+        }
+
+        .pacman-bottom {
+            background-color: #329db0;
+            border-radius: 0 0 100px 100px;
+            height: 25px;
+            width: 80px;
+            animation: rotate2 0.99s infinite linear;
+        }
+
+        .pacman {
+            position: relative;
+            top: 3rem;
+            left: 2rem;
+            z-index: 2;
+        }
+
+        .earth {
+            /* background-color: rgb(16, 72, 16); */
+            height: 2rem;
+            position: relative;
+            top: 2rem;
+            z-index: 0;
+        }
+
+        .dots {
+            background-color: black;
+            z-index: 1;
+            width: 1px;
+            height: 1px;
+            position: relative;
+            border-radius: 100%;
+            margin-top: -105px;
+            margin-left: 60px;
+            animation: feed 1s linear 0s infinite;
+        }
+
+
+        @keyframes rotate1 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(-35deg);
+                translate: -15px 3px;
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes rotate2 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(+35deg);
+                translate: -15px -3px;
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes feed {
+            0% {
+                box-shadow:
+                    102px 3px 0 0 white,
+                    155px 3px 0 0 white;
+            }
+
+            100% {
+                box-shadow:
+                    40px 3px 0 0 #ff0059,
+                    102px 3px 0 0 white;
+            }
+        }
+
+        /* zigzag animation */
+        .zigzag {
+            border-radius: 100px;
+            background-color: #ff0059;
+            height: 1px;
+            width: 1px;
+            margin-top: 109px;
+            margin-left: 226px;
+            animation: zigzag 3s linear infinite;
+            transform: translateX(-50%);
+        }
+
+        @keyframes zigzag {
+            0% {
+                translate: 0 0;
+            }
+
+            25% {
+                translate: -50px 100px;
+            }
+
+            50% {
+                translate: -100px 0px;
+            }
+
+            75% {
+                translate: -150px 100px;
+            }
+
+            100% {
+                translate: -210px 0px;
+            }
+        }
+
+        /* Ring Animation */
+        .ring {
+            /* background-color: rgb(166, 0, 19); */
+            border: 4px solid #5f2130;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            margin: 4.5rem 4.5rem;
+        }
+
+        .holder .ring-ball {
+            background: #ff0059;
+            position: relative;
+            border-radius: 50%;
+            height: 1px;
+            width: 1px;
+            top: -45px;
+            margin: 1px;
+        }
+
+        .holder {
+            height: 70px;
+            width: 4px;
+            top: -21px;
+            left: 12px;
+            position: relative;
+            animation: balls-rotate 1.2s linear infinite;
+        }
+
+        @keyframes balls-rotate {
+            0% {
+                transform: rotate(0def);
+            }
+
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .cycle {
+            background: #ff0059;
+            position: relative;
+            display: inline-block;
+            margin: 1.5rem 6rem;
+            content: '';
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            background-color: clr(cp, 3);
+            /* box-shadow: .25em .25em .25em #7c495b; */
+            animation: movingCircles 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes movingCircles {
+            0% {
+                z-index: 1;
+                transform: translate(0, 0);
+
+            }
+
+            50% {
+                z-index: 1;
+                transform: translate(0, 150%, );
+                background: #ff9ec0;
+                box-shadow:
+                    50px 0px 0 0 #329db0,
+                    -50px 0px 0 0 #ffee00;
+            }
+
+            100% {
+                z-index: 0;
+                transform: translate(0, 300%);
+            }
+        }
+
+        .bouncy-ball {
+            background: #329db0;
+            width: 2rem;
+            height: 2rem;
+            border: 0.3rem solid #ff0059 ;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            margin: 10rem 5.5rem;
+            mask: radial-gradient(ellipse at center,
+                    rgba(171, 65, 65, 0) 0%,
+                    rgba(0, 0, 0, 0) 20%,
+                    rgba(0, 0, 0, 1) 20.1%,
+                    rgba(0, 0, 0, 1) 75%,
+                    rgba(0, 0, 0, 1) 100%);
+            animation: bounce 2s linear infinite;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(1, 1) translateY(-80%);
+            }
+
+            25% {
+                transform: scale(1, 1) translateY(-45%);
+            }
+
+            50% {
+                transform: scale(1, 1) translateY(10%);
+            }
+
+            66% {
+                transform: scale(1.2, .75) translateY(25%);
+            }
+
+            75% {
+                transform: scale(1, 1.25) translateY(-10%);
+            }
+
+            100% {
+                transform: scale(1, 1) translateY(-80%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="frame">
+            <div class="pacman">
+                <div class="pacman-top"></div>
+                <div class="pacman-bottom"></div>
+            </div>
+            <div class="earth"></div>
+            <div class="dots"></div>
+        </div>
+
+        <div id="frame">
+            <div class="zigzag"></div>
+        </div>
+
+        <div id="frame">
+            <div class="ring">
+                <div class="holder">
+                    <div class="ring-ball"></div>
+                    <div class="ring-ball"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="frame">
+            <div class="cycle"></div>
+        </div>
+
+        <div id="frame">
+            <div class="bouncy-ball"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</body>
+
+</html>

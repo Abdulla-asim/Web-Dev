@@ -1,0 +1,25 @@
+body
+{
+    font-family: verdana;
+    background-color: antiquewhite;
+    font-size: 110%;
+}
+
+h1 
+{
+    color: brown;
+}
+
+p 
+{
+    color: brown;
+    border: 2px solid lightcoral;
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+
+    /* Margin outside the border */
+    margin: 50px;  
+    
+}
