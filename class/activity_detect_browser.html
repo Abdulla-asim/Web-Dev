@@ -1,0 +1,37 @@
+<script type="text/javascript"> 
+	// function WhichBrowser() { 
+	// 	if (navigator.userAgent.indexOf("MSIE") != -1) {
+	// 		 alert("You are running Microsoft Internet Explorer."); 
+	// 	}else if (navigator.userAgent.indexOf("Firefox") != -1) {
+	// 		 alert("You are running FireFox."); 
+	// 	} else if (navigator.userAgent.indexOf("Navigator") != -1) {
+	// 		 alert("You are running Netscape.");
+	// 	} else if (navigator.userAgent.indexOf("Opera") != -1 ) {
+	// 		 alert("You are running Opera."); 
+	// 	}else { 
+	// 		alert("You are running some odd-ball browser."); 
+	// 	} 
+	// } 
+    function WhichBrowser() {
+    let userAgent = navigator.userAgent;
+    let browser = "an unknown browser";
+
+    if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+        browser = "Google Chrome";
+    } else if (userAgent.includes("Firefox")) {
+        browser = "Mozilla Firefox";
+    } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+        browser = "Apple Safari";
+    } else if (userAgent.includes("Edg")) {
+        browser = "Microsoft Edge";
+    } else if (userAgent.includes("OPR")) {
+        browser = "Opera";
+    } 
+
+    alert("You are running " + browser);
+}
+
+</script> 
+<body>
+<input type="button" value="Which Browser? " onclick="WhichBrowser()"/> 
+</body>

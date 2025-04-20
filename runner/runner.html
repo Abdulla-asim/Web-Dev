@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runner</title>
+</head>
+<body>
+    <script>
+        var currentRunner = 0;
+        var runner
+        var runner = new Array();
+        runner.push('./0.png')
+        runner.push('./1.png')
+        runner.push('./2.png')
+        runner.push('./3.png')
+        runner.push('./4.png')
+        runner.push('./5.png')
+
+        console.log(runner.toString())
+
+        function startRunning() {
+            if (currentRunner == 5) 
+                currentRunner = 0;
+            else 
+            {
+                currentRunner++;
+                document.animation.src = runner[currentRunner];
+            }
+        }
+    </script>
+
+    <p>
+        <img src="0.png" alt="runner" name="animation">
+    </p>
+    <form >
+        <input type="button" name="run" value="Start" onclick="runnerID = setInterval(startRunning, 60)">
+        <input type="button" name="stop" value="Stop" onclick="clearInterval(runnerID)">
+    </form>
+</body>
+</html>
